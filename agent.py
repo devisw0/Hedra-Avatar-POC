@@ -27,6 +27,20 @@ def _fetch_current_weather(city: str, units: str = "imperial") -> dict:
     return r.json()
 
 class Assistant(Agent):
+    def __init__(self):
+        super().__init__(
+            instructions=(
+                "You are a concise, helpful voice assistant. "
+                "When the user asks about weather, call the 'get_weather' tool. "
+                "- If the tool returns error 'missing_city', politely ask which city. "
+                "- If the user omits a city but a previous city is known, use that city. "
+                "If units are not specified, default to Fahrenheit (imperial). "
+                "Be brief and mention temp and condition."
+            )
+            # Note: tools defined with @function_tool are auto-registered for this Agent.
+        )
+        self.last_city = None  # remember the most recent city
+
     # Expose the function as an LLM-callable tool
     @function_tool(
         description=(
@@ -37,15 +51,27 @@ class Assistant(Agent):
     async def get_weather(
         self,
         context: RunContext,
-        city: str,
+        city: str = "",
         units: str = "imperial",
     ) -> dict:
         """
         Returns a concise JSON with city, temperature, conditions, humidity, wind, and unit system.
+        If city is missing, uses last known city if available, otherwise returns a clarification request.
         """
+        # If no city provided, try last known city
+        if not city.strip():
+            if self.last_city:
+                city = self.last_city
+            else:
+                return {
+                    "error": "missing_city",
+                    "message": "Please tell me which city you'd like the weather for."
+                }
+
         try:
             data = _fetch_current_weather(city, units)
-            # Normalize a small, clean payload back to the model
+            # Store the successfully used city
+            self.last_city = city
             out = {
                 "city": f"{data.get('name')}",
                 "conditions": data["weather"][0]["description"] if data.get("weather") else "unknown",
@@ -57,21 +83,9 @@ class Assistant(Agent):
             }
             return out
         except requests.HTTPError as e:
-            # Return a clear tool error so the model can apologize or ask for another city
             return {"error": f"OpenWeather error: {e.response.status_code} {e.response.text[:120]}"}
         except Exception as e:
             return {"error": f"Weather lookup failed: {str(e)}"}
-
-    def __init__(self):
-        super().__init__(
-            instructions=(
-                "You are a concise, helpful voice assistant. "
-                "When the user asks about weather, call the 'get_weather' tool. "
-                "If units are not specified, default to Fahrenheit (imperial). "
-                "Be brief and mention temp and condition."
-            )
-            # Note: tools defined with @function_tool are auto-registered for this Agent.
-        )
 
 async def entrypoint(ctx: agents.JobContext):
     # OpenAI Realtime = STT + LLM + TTS
