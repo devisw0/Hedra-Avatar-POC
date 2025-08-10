@@ -191,8 +191,7 @@ class Assistant(Agent):
             # Filter 3-hour entries for the target date
             entries = []
             for item in fc.get("list", []):
-                # item["dt_txt"] like "2025-08-10 12:00:00" (UTC)
-                ts = item.get("dt_txt")
+                ts = item.get("dt_txt")  # "YYYY-MM-DD HH:MM:SS" (UTC)
                 if not ts:
                     continue
                 try:
@@ -207,8 +206,8 @@ class Assistant(Agent):
 
             # Aggregate min/max temps and most common description
             temps = [ (e.get("main") or {}).get("temp") for e in entries if (e.get("main") or {}).get("temp") is not None ]
-            descs = [ ((e.get("weather") or [{}])[0].get("description") or "").lower() for e in entries ]
             temps = [t for t in temps if isinstance(t, (int, float))]
+            descs = [ ((e.get("weather") or [{}])[0].get("description") or "").lower() for e in entries ]
 
             tmin = min(temps) if temps else None
             tmax = max(temps) if temps else None
