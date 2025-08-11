@@ -1,0 +1,6 @@
+python-dotenv
+requests
+openai>=1.0
+livekit-agents
+livekit-plugins-openai
+livekit-plugins-hedra
