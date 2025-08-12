@@ -519,7 +519,7 @@ async def entrypoint(ctx: agents.JobContext):
     avatar = hedra.AvatarSession(avatar_id=os.getenv("HEDRA_AVATAR_ID"))
     await avatar.start(session, room=ctx.room)
     await session.start(room=ctx.room, agent=Assistant(), room_input_options=RoomInputOptions())
-    await session.generate_reply(instructions="Hi there! Ask me weather or interns questions (e.g., 'who wants to travel to Europe?').")
+    await session.generate_reply(instructions="Hi there! You can ask me about weather or interns (e.g., 'who wants to travel to Europe?') or other questions.")
 
 if __name__ == "__main__":
     agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))
