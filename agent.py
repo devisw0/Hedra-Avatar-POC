@@ -342,7 +342,7 @@ def _ensure_loaded_dataset() -> tuple[pd.DataFrame, dict]:
                         vals.append(v2)
             return vals
         df["__accords_list"] = df.apply(_row_acc, axis=1)
-        colmap.setdefault("accords", "__accords_list")
+        colmap["accords"] = "__accords_list"  # Always use the synthesized list
 
     print(f"[FRAG] column map (final): {colmap}")
 
@@ -371,8 +371,10 @@ def _ensure_loaded_dataset() -> tuple[pd.DataFrame, dict]:
     # ---- Year / decade
     ycol = colmap.get("year")
     if ycol and ycol in df.columns:
-        df[ycol] = df[ycol].map(_coerce_int)
-        df["__decade"] = df[ycol].map(lambda y: (y // 10) * 10 if isinstance(y, int) else None)
+        # Coerce to numeric (NaN for bad/missing), then compute decade for non-null rows
+        series = pd.to_numeric(df[ycol], errors="coerce")
+        df[ycol] = series  # keep numeric year
+        df["__decade"] = ((series // 10) * 10).where(series.notna(), None)
 
     # ---- Numeric columns
     for key in ("rating", "rating_count", "price", "longevity", "sillage"):

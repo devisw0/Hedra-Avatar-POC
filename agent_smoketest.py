@@ -38,9 +38,9 @@ async def main():
     # 5) Optional weather tests (requires OPENWEATHER_API_KEY)
     if os.getenv("OPENWEATHER_API_KEY"):
         print("\n=== Weather checks ===")
-        w = await asst.get_weather(context=None, city="Hillsborough, NJ", units="imperial")
+        w = await asst.get_weather(context=None, city="Union Beach", units="imperial")
         print("get_weather:", w)
-        f = await asst.get_forecast(context=None, city="Hillsborough, NJ", units="imperial", when="tomorrow")
+        f = await asst.get_forecast(context=None, city="Ulaanbaatar", units="imperial", when="tomorrow")
         print("get_forecast:", f)
     else:
         print("\n(Skipping weather tests; OPENWEATHER_API_KEY not set)")

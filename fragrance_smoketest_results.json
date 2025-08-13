@@ -1,0 +1,594 @@
+{
+  "average_rating": {
+    "average": 3.9603790051115824,
+    "count": 24063
+  },
+  "top5_by_rating": {
+    "items": [
+      {
+        "name": "narmar-extrait-de-parfum",
+        "brand": "nilafar-du-nil",
+        "rating": 4.93,
+        "rating_count": 30
+      },
+      {
+        "name": "aoud-no-1",
+        "brand": "parfumerie-bruckner",
+        "rating": 4.86,
+        "rating_count": 28
+      },
+      {
+        "name": "khaox",
+        "brand": "darkbeat-parfums",
+        "rating": 4.85,
+        "rating_count": 26
+      },
+      {
+        "name": "cheval-d-arabie",
+        "brand": "sultan-pasha-attars",
+        "rating": 4.81,
+        "rating_count": 26
+      },
+      {
+        "name": "floratta",
+        "brand": "o-boticario",
+        "rating": 4.81,
+        "rating_count": 31
+      }
+    ]
+  },
+  "top5_by_rating_votes1000": {
+    "items": [
+      {
+        "name": "le-male-le-parfum",
+        "brand": "jean-paul-gaultier",
+        "rating": 4.6,
+        "rating_count": 13406
+      },
+      {
+        "name": "the-most-wanted-parfum",
+        "brand": "azzaro",
+        "rating": 4.59,
+        "rating_count": 3842
+      },
+      {
+        "name": "emporio-armani-stronger-with-you-intensely",
+        "brand": "giorgio-armani",
+        "rating": 4.57,
+        "rating_count": 9587
+      },
+      {
+        "name": "the-most-wanted",
+        "brand": "azzaro",
+        "rating": 4.57,
+        "rating_count": 4897
+      },
+      {
+        "name": "enigma-pour-homme",
+        "brand": "roja-dove",
+        "rating": 4.56,
+        "rating_count": 1674
+      }
+    ]
+  },
+  "top5_women_by_rating": {
+    "items": [
+      {
+        "name": "floratta",
+        "brand": "o-boticario",
+        "rating": 4.81,
+        "rating_count": 31
+      },
+      {
+        "name": "fleurs-d-amour",
+        "brand": "roger-gallet",
+        "rating": 4.74,
+        "rating_count": 31
+      },
+      {
+        "name": "bellodgia-extrait",
+        "brand": "caron",
+        "rating": 4.74,
+        "rating_count": 99
+      },
+      {
+        "name": "liquid-brun",
+        "brand": "fragrance-world",
+        "rating": 4.73,
+        "rating_count": 30
+      },
+      {
+        "name": "spirit-of-flowers",
+        "brand": "o-boticario",
+        "rating": 4.73,
+        "rating_count": 37
+      }
+    ]
+  },
+  "top5_france_men_by_rating_count": {
+    "items": [
+      {
+        "name": "sauvage",
+        "brand": "dior",
+        "rating": 3.88,
+        "rating_count": 23727
+      },
+      {
+        "name": "terre-d-hermes",
+        "brand": "hermes",
+        "rating": 4.28,
+        "rating_count": 21347
+      },
+      {
+        "name": "aventus",
+        "brand": "creed",
+        "rating": 4.34,
+        "rating_count": 19581
+      },
+      {
+        "name": "la-nuit-de-l-homme",
+        "brand": "yves-saint-laurent",
+        "rating": 4.44,
+        "rating_count": 19533
+      },
+      {
+        "name": "encre-noire",
+        "brand": "lalique",
+        "rating": 4.18,
+        "rating_count": 19165
+      }
+    ]
+  },
+  "find_notes_vanilla_or_tobacco": {
+    "items": [
+      {
+        "name": "le-male-pride-collector",
+        "brand": "jean-paul-gaultier",
+        "rating": 1.93,
+        "rating_count": 632
+      },
+      {
+        "name": "waffle",
+        "brand": "we-pink",
+        "rating": 2.41,
+        "rating_count": 27
+      },
+      {
+        "name": "erba-oud",
+        "brand": "sospiro-perfumes",
+        "rating": 2.66,
+        "rating_count": 65
+      },
+      {
+        "name": "cyber-sex",
+        "brand": "filippo-sorcinelli",
+        "rating": 2.74,
+        "rating_count": 70
+      },
+      {
+        "name": "oud-imperium",
+        "brand": "navitus-parfums",
+        "rating": 2.81,
+        "rating_count": 62
+      },
+      {
+        "name": "aventhis",
+        "brand": "in-the-box",
+        "rating": 2.83,
+        "rating_count": 65
+      },
+      {
+        "name": "wild-carrot-oud",
+        "brand": "bohoboco",
+        "rating": 2.85,
+        "rating_count": 147
+      },
+      {
+        "name": "neroli-outrenoir-2024",
+        "brand": "guerlain",
+        "rating": 2.89,
+        "rating_count": 27
+      },
+      {
+        "name": "cafe",
+        "brand": "franck-boclet",
+        "rating": 2.94,
+        "rating_count": 197
+      },
+      {
+        "name": "erato",
+        "brand": "brocard",
+        "rating": 2.95,
+        "rating_count": 43
+      }
+    ]
+  },
+  "find_accords_floral_and_woody_allmatch": {
+    "items": [
+      {
+        "name": "accento-overdose-pride-edition",
+        "brand": "xerjoff",
+        "rating": 1.42,
+        "rating_count": 201
+      },
+      {
+        "name": "french-kiss",
+        "brand": "bybozo",
+        "rating": 2.65,
+        "rating_count": 26
+      },
+      {
+        "name": "neroli",
+        "brand": "aaron-terence-hughes",
+        "rating": 2.86,
+        "rating_count": 29
+      },
+      {
+        "name": "diesel-green-feminine-special-edition",
+        "brand": "diesel",
+        "rating": 2.92,
+        "rating_count": 26
+      },
+      {
+        "name": "oshi",
+        "brand": "bi-es",
+        "rating": 2.93,
+        "rating_count": 30
+      },
+      {
+        "name": "svetskaya-lvitsa",
+        "brand": "brocard",
+        "rating": 3.04,
+        "rating_count": 215
+      },
+      {
+        "name": "muna",
+        "brand": "lattafa-perfumes",
+        "rating": 3.1,
+        "rating_count": 30
+      },
+      {
+        "name": "show-off",
+        "brand": "charriol",
+        "rating": 3.11,
+        "rating_count": 45
+      },
+      {
+        "name": "sirenis",
+        "brand": "les-liquides-imaginaires",
+        "rating": 3.14,
+        "rating_count": 216
+      },
+      {
+        "name": "cherchez-la-femme",
+        "brand": "faberlic",
+        "rating": 3.15,
+        "rating_count": 182
+      }
+    ]
+  },
+  "counts_by_decade": {
+    "counts": {
+      "2020": 5309,
+      "2010": 11533,
+      "2000": 3459,
+      "1990": 886,
+      "1980": 368,
+      "1970": 171,
+      "1960": 67,
+      "1950": 41,
+      "1940": 34,
+      "1930": 42,
+      "1920": 39,
+      "1910": 22,
+      "1900": 11,
+      "1890": 5,
+      "1880": 8,
+      "1870": 7,
+      "1860": 2,
+      "1850": 7,
+      "1840": 2,
+      "1830": 2,
+      "1820": 6,
+      "1800": 3,
+      "1780": 2
+    }
+  },
+  "counts_by_country_unisex": {
+    "counts": {
+      "france": 2268,
+      "italy": 1349,
+      "usa": 965,
+      "uk": 813,
+      "uae": 645,
+      "brazil": 280,
+      "spain": 214,
+      "russia": 145,
+      "sweden": 102,
+      "turkey": 101,
+      "netherlands": 74,
+      "switzerland": 71,
+      "canada": 58,
+      "germany": 57,
+      "thailand": 56,
+      "oman": 56,
+      "argentina": 55,
+      "greece": 52,
+      "arabia saudi": 46,
+      "japan": 40,
+      "czech republic": 26,
+      "south korea": 22,
+      "romania": 21,
+      "poland": 19,
+      "australia": 18,
+      "portugal": 17,
+      "lebanon": 16,
+      "malaysia": 13,
+      "denmark": 13,
+      "ireland": 13,
+      "belgium": 11,
+      "kazakhstan": 10,
+      "egypt": 8,
+      "iceland": 8,
+      "kuwait": 6,
+      "india": 5,
+      "bahrein": 5,
+      "mexico": 4,
+      "hong kong": 4,
+      "ukraine": 2,
+      "hungary": 2,
+      "iran": 1,
+      "bahrain": 1,
+      "israel": 1,
+      "latvia": 1,
+      "monaco": 1,
+      "bermuda": 1,
+      "qatar": 1,
+      "morocco": 1
+    }
+  },
+  "avg_rating_dior": {
+    "average": 4.11795918367347,
+    "count": 196
+  },
+  "avg_rating_guerlain": {
+    "average": 4.137233429394812,
+    "count": 347
+  },
+  "nineties_with_citrus": {
+    "items": [
+      {
+        "name": "exsultate",
+        "brand": "natura",
+        "rating": 4.69,
+        "rating_count": 26
+      }
+    ]
+  },
+  "french_women_jasmine": {
+    "items": [
+      {
+        "name": "western-leather-white",
+        "brand": "alexandre-j",
+        "rating": 3.0,
+        "rating_count": 116
+      },
+      {
+        "name": "indomptee",
+        "brand": "lulu-castagnette",
+        "rating": 3.13,
+        "rating_count": 86
+      },
+      {
+        "name": "maroon",
+        "brand": "max-philip",
+        "rating": 3.18,
+        "rating_count": 28
+      },
+      {
+        "name": "varens-original-borneo-dream",
+        "brand": "ulric-de-varens",
+        "rating": 3.19,
+        "rating_count": 27
+      },
+      {
+        "name": "lulucastagnette",
+        "brand": "lulu-castagnette",
+        "rating": 3.2,
+        "rating_count": 84
+      },
+      {
+        "name": "lili-fantasy",
+        "brand": "juliette-has-a-gun",
+        "rating": 3.21,
+        "rating_count": 757
+      },
+      {
+        "name": "enjoy",
+        "brand": "franck-boclet",
+        "rating": 3.21,
+        "rating_count": 56
+      },
+      {
+        "name": "eclat-d-arpege-limited-edition",
+        "brand": "lanvin",
+        "rating": 3.22,
+        "rating_count": 79
+      },
+      {
+        "name": "nafnaf-too",
+        "brand": "nafnaf",
+        "rating": 3.23,
+        "rating_count": 141
+      },
+      {
+        "name": "fleurs-d-ombre-bergamote",
+        "brand": "jean-charles-brosseau",
+        "rating": 3.23,
+        "rating_count": 47
+      }
+    ]
+  },
+  "bottom10_with_oud": {
+    "items": [
+      {
+        "name": "desir-infini",
+        "brand": "navitus-parfums",
+        "rating": 2.94,
+        "rating_count": 34
+      },
+      {
+        "name": "oud-mafia",
+        "brand": "morph",
+        "rating": 3.23,
+        "rating_count": 26
+      },
+      {
+        "name": "i-wanna-be-loved-by-you",
+        "brand": "haute-fragrance-company-hfc",
+        "rating": 3.43,
+        "rating_count": 58
+      },
+      {
+        "name": "y-elixir",
+        "brand": "yves-saint-laurent",
+        "rating": 3.45,
+        "rating_count": 788
+      },
+      {
+        "name": "oudgasm-cafe-oud-19-eau-de-parfum-intense",
+        "brand": "kayali-fragrances",
+        "rating": 3.46,
+        "rating_count": 181
+      },
+      {
+        "name": "cowboy-kush",
+        "brand": "boy-smells",
+        "rating": 3.52,
+        "rating_count": 42
+      },
+      {
+        "name": "oudgasm-tobacco-oud-04-eau-de-parfum-intense",
+        "brand": "kayali-fragrances",
+        "rating": 3.57,
+        "rating_count": 154
+      },
+      {
+        "name": "oudgasm-smoky-oud-07",
+        "brand": "kayali-fragrances",
+        "rating": 3.64,
+        "rating_count": 28
+      },
+      {
+        "name": "bayaan",
+        "brand": "lattafa-perfumes",
+        "rating": 3.65,
+        "rating_count": 31
+      },
+      {
+        "name": "oudgasm-rose-oud-16-eau-de-parfum-intense",
+        "brand": "kayali-fragrances",
+        "rating": 3.67,
+        "rating_count": 147
+      }
+    ]
+  },
+  "woody_2010s_rating_ge4": {
+    "items": [
+      {
+        "name": "300-km-h-air-speed",
+        "brand": "avon",
+        "rating": 4.0,
+        "rating_count": 39
+      },
+      {
+        "name": "avon-homem-active",
+        "brand": "avon",
+        "rating": 4.0,
+        "rating_count": 38
+      },
+      {
+        "name": "azzaro-aqua-frost",
+        "brand": "azzaro",
+        "rating": 4.0,
+        "rating_count": 44
+      },
+      {
+        "name": "tubereuse-imperiale",
+        "brand": "bdk-parfums",
+        "rating": 4.0,
+        "rating_count": 980
+      },
+      {
+        "name": "alpine-suede",
+        "brand": "bath-body-works",
+        "rating": 4.0,
+        "rating_count": 60
+      },
+      {
+        "name": "tutti-dolci-white-mocha-kiss",
+        "brand": "bath-body-works",
+        "rating": 4.0,
+        "rating_count": 78
+      },
+      {
+        "name": "bvlgari-man",
+        "brand": "bvlgari",
+        "rating": 4.0,
+        "rating_count": 2319
+      },
+      {
+        "name": "splendida-jasmin-noir",
+        "brand": "bvlgari",
+        "rating": 4.0,
+        "rating_count": 801
+      },
+      {
+        "name": "212-vip-rose-pills",
+        "brand": "carolina-herrera",
+        "rating": 4.0,
+        "rating_count": 42
+      },
+      {
+        "name": "delices-de-cartier-edition-limitee-2010",
+        "brand": "cartier",
+        "rating": 4.0,
+        "rating_count": 38
+      }
+    ]
+  },
+  "top5_jpg_by_votes": {
+    "items": [
+      {
+        "name": "le-male",
+        "brand": "jean-paul-gaultier",
+        "rating": 4.01,
+        "rating_count": 18841
+      },
+      {
+        "name": "le-male-le-parfum",
+        "brand": "jean-paul-gaultier",
+        "rating": 4.6,
+        "rating_count": 13406
+      },
+      {
+        "name": "ultra-male",
+        "brand": "jean-paul-gaultier",
+        "rating": 4.44,
+        "rating_count": 12479
+      },
+      {
+        "name": "classique",
+        "brand": "jean-paul-gaultier",
+        "rating": 3.92,
+        "rating_count": 11424
+      },
+      {
+        "name": "le-male-elixir",
+        "brand": "jean-paul-gaultier",
+        "rating": 4.56,
+        "rating_count": 10388
+      }
+    ]
+  }
+}
