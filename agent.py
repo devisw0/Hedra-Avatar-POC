@@ -31,7 +31,7 @@ MARKET = (os.getenv("MARKET") or "US").upper()
 voice_map = {
     "US": os.getenv("OPENAI_VOICE_US") or os.getenv("OPENAI_VOICE") or "verse",
     "IT": os.getenv("OPENAI_VOICE_IT") or os.getenv("OPENAI_VOICE") or "aria",
-    "FR": os.getenv("OPENAI_VOICE_FR") or os.getenv("OPENAI_VOICE") or "nova",
+    "FR": os.getenv("OPENAI_VOICE_FR") or os.getenv("OPENAI_VOICE") or "alloy",
 }
 VOICE = voice_map.get(MARKET, os.getenv("OPENAI_VOICE") or "alloy")
 
@@ -48,9 +48,14 @@ def market_instructions() -> str:
         )
     if MARKET == "FR":
         return (
-            "Speak in English for a France-based audience. Keep a subtle, natural French prosody—"
-            "never caricatured. Pronounce French names authentically (Paris = pa-REE; Lyon = lee-ON; "
-            "Bordeaux = bor-DOH; Hermès = air-MESS)."
+            "CRITICAL PRONUNCIATION RULE: You are speaking to French people. "
+            "NEVER use English pronunciation for French names. Always say: "
+            "'Eev San Lo-RAHN' (never 'Eves Saint LOR-ent') for Yves Saint Laurent, "
+            "'Zhee-vahn-SHEE' (never 'jih-VON-shee') for Givenchy, "
+            "'Air-MESS' (never 'HUR-meez') for Hermès, "
+            "'Shah-NELL' (never 'sha-NELL') for Chanel. "
+            "If you use English pronunciation of French names, French people will think you're ignorant. "
+            "This is absolutely critical for cultural respect."
         )
     return "Speak in clear English. Be concise, friendly, and accurate."
 
@@ -715,6 +720,43 @@ class Assistant(Agent):
         if series.empty:
             return {"average": None, "count": 0}
         return {"average": float(series.mean()), "count": int(series.count())}
+
+    @function_tool(
+    description=(
+        "Fragrance: list the most common components after filters. "
+        "Use kind='notes' or 'accords'. Returns {'counts': {component: count}, 'total_perfumes': N}. "
+        "Respects the same filters as other fragrance tools (country, gender, decade, year_min/max, "
+        "rating_min/max, votes_min, notes/accords for pre-filtering, etc.)."
+        )
+    )
+    async def frag_top_components(
+        self,
+        context: RunContext,
+        kind: str = "notes",
+        filters: dict | None = None,
+        top_n: int = 20,
+        ) -> dict:
+        if not self._frag_ready():
+            return {"error": f"Fragrance dataset not found at {FRAG_CSV_PATH}."}
+
+        kind = (kind or "notes").strip().lower()
+        col = "__notes_list" if kind == "notes" else "__accords_list" if kind == "accords" else None
+        if not col:
+            return {"error": "invalid_kind", "message": "kind must be 'notes' or 'accords'."}
+
+        df2 = self._apply_filters(filters or {})
+        if df2.empty or col not in df2.columns:
+            return {"counts": {}, "total_perfumes": 0}
+
+        # explode list column to long form and count
+        s = df2[col].explode().dropna().map(lambda x: str(x).strip().lower())
+        vc = s.value_counts()
+        top = vc.head(max(1, int(top_n)))
+        return {
+            "counts": {k: int(v) for k, v in top.items()},
+            "total_perfumes": int(len(df2)),
+        }
+
 
     @function_tool(description="Fragrance: return top-N rows by a numeric column (e.g., rating, rating_count, price). Include filters like brand, country, notes, gender, etc.")
     async def frag_get_top_n(self, context: RunContext, column: str, filters: dict | None = None, n: int = 5, ascending: bool = False, match_all_notes: bool = False, match_all_accords: bool = False) -> dict:
