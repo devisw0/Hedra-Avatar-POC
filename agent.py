@@ -24,6 +24,37 @@ except Exception:
 
 load_dotenv()
 
+# === Market / voice / instructions (no weather changes) ===
+MARKET = (os.getenv("MARKET") or "US").upper()
+
+# Per-market voices (override with OPENAI_VOICE if you want one global voice)
+voice_map = {
+    "US": os.getenv("OPENAI_VOICE_US") or os.getenv("OPENAI_VOICE") or "verse",
+    "IT": os.getenv("OPENAI_VOICE_IT") or os.getenv("OPENAI_VOICE") or "aria",
+    "FR": os.getenv("OPENAI_VOICE_FR") or os.getenv("OPENAI_VOICE") or "nova",
+}
+VOICE = voice_map.get(MARKET, os.getenv("OPENAI_VOICE") or "alloy")
+
+def market_instructions() -> str:
+    if MARKET == "US":
+        return (
+            "Speak in English for a US audience. Use American English phrasing, "
+            "12-hour time. Be concise, friendly, and direct. Pronounce US place names naturally."
+        )
+    if MARKET == "IT":
+        return (
+            "Speak in English for an Italian audience. Keep a subtle, natural Italian prosody—"
+            "never caricatured. Pronounce Italian names authentically (Milano, Firenze)."
+        )
+    if MARKET == "FR":
+        return (
+            "Speak in English for a France-based audience. Keep a subtle, natural French prosody—"
+            "never caricatured. Pronounce French names authentically (Paris = pa-REE; Lyon = lee-ON; "
+            "Bordeaux = bor-DOH; Hermès = air-MESS)."
+        )
+    return "Speak in clear English. Be concise, friendly, and accurate."
+
+
 # =============================================================================
 #                                WEATHER HELPERS
 # =============================================================================
@@ -400,6 +431,8 @@ class Assistant(Agent):
         super().__init__(
             instructions=(
                 "You are a concise, helpful voice assistant.\n"
+                "- Keep replies conversational and energetic.\n"
+                "- show some expression and ethusiasm\n"
                 "Weather:\n"
                 "- For current weather questions, call 'get_weather'.\n"
                 "- For future weather (tomorrow/next few days), call 'get_forecast'.\n"
@@ -774,33 +807,42 @@ class Assistant(Agent):
 # ---------------------------
 
 async def entrypoint(ctx: agents.JobContext):
-    # 1) CRITICAL: Connect to the room first
-    await ctx.connect()  # REQUIRED so ctx.room is valid
-    
-    # 2) Create the realtime session (OpenAI Realtime handles STT/LLM/TTS)
+    # 1) Connect first (unchanged)
+    await ctx.connect()
+
+    # 2) Create the realtime session (unchanged except where you set voice/instructions)
     session = AgentSession(
-        llm=RealtimeModel(),  # uses OPENAI_API_KEY
+        llm=RealtimeModel(
+            voice=VOICE,                     # <-- from the market config you added
+        
+        ),
     )
 
-    # 3) Start Hedra avatar (requires HEDRA_API_KEY and HEDRA_AVATAR_ID)
-    avatar_id = os.getenv("HEDRA_AVATAR_ID")
-    if not avatar_id:
-        print("WARNING: HEDRA_AVATAR_ID not set, skipping avatar")
-        avatar = None
-    else:
+    # 3) Start Hedra avatar (REPLACE your old avatar block with this)
+    avatar_map = {
+        "US": os.getenv("HEDRA_AVATAR_ID_US"),
+        "IT": os.getenv("HEDRA_AVATAR_ID_IT"),
+        "FR": os.getenv("HEDRA_AVATAR_ID_FR"),
+    }
+    avatar_id = avatar_map.get(MARKET) or os.getenv("HEDRA_AVATAR_ID")
+
+    if avatar_id:
         avatar = hedra.AvatarSession(avatar_id=avatar_id)
-        print("Starting Hedra avatar…")
+        print(f"Starting Hedra avatar for MARKET={MARKET} (id={avatar_id})…")
         await avatar.start(session, room=ctx.room)
         print("Hedra avatar started.")
+    else:
+        print(f"NOTE: No avatar configured for MARKET={MARKET}.")
 
-    # 4) Start the agent
+    # 4) Start the agent (unchanged)
     await session.start(agent=Assistant(), room=ctx.room, room_input_options=RoomInputOptions())
 
-    # 5) Optional greeting
+    # 5) Optional greeting (unchanged)
     await session.generate_reply(instructions=(
         "Hi there! I can check the current weather or tomorrow's forecast, "
         "and I can also answer questions about the fragrance dataset—like averages, top items, and filters."
     ))
+
 
 if __name__ == "__main__":
     agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))
